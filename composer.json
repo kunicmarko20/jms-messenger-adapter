@@ -1,0 +1,59 @@
+{
+    "name": "kunicmarko/jms-messenger-adapter",
+    "description": "Use JMS Serializer with Symfony Messenger.",
+    "type": "library",
+    "keywords": [
+        "symfony",
+        "messenger",
+        "serializer",
+        "jms",
+        "adapter",
+        "bundle"
+    ],
+    "homepage": "https://github.com/kunicmarko20/jms-messenger-adapter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marko Kunic",
+            "email": "kunicmarko20@gmail.com",
+            "homepage": "https://twitter.com/kunicmarko20"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "jms/serializer": "^2.1",
+        "symfony/messenger": "^4.2"
+    },
+    "require-dev": {
+        "behat/behat": "^3.5",
+        "behat/symfony2-extension": "^2.1",
+        "jms/serializer-bundle": "^3.1",
+        "matthiasnoback/symfony-dependency-injection-test": "^3.0",
+        "phpunit/phpunit": "^7.4",
+        "symfony/config": "^4.2",
+        "symfony/dependency-injection": "^4.2",
+        "symfony/framework-bundle": "^4.2",
+        "symfony/http-kernel": "^4.2"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4" : {
+            "KunicMarko\\JMSMessengerAdapter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4" : {
+            "KunicMarko\\JMSMessengerAdapter\\Tests\\": "tests/",
+            "KunicMarko\\JMSMessengerAdapter\\Features\\Fixtures\\Project\\": "features/Fixtures/Project/src",
+            "KunicMarko\\JMSMessengerAdapter\\Features\\": "features/"
+        }
+    }
+}

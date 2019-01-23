@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="JMS\Serializer\Context">
+        <property name="attributes" type="array" expose="true"/>
+        <property name="initialized" type="boolean" expose="true"/>
+    </class>
+</serializer>

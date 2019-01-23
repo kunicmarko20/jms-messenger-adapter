@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="JMS\Serializer\DeserializationContext">
+        <property name="depth" type="integer" expose="true"/>
+    </class>
+</serializer>

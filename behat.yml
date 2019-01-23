@@ -1,0 +1,14 @@
+default:
+  suites:
+    default:
+      contexts:
+        - KunicMarko\JMSMessengerAdapter\Features\Context\JMSMessengerAdapterContext:
+            messageBus: '@message_bus'
+            receiverLocator: '@messenger.receiver_locator'
+  extensions:
+    Behat\Symfony2Extension:
+      kernel:
+        env: test
+        debug: true
+        path: features/Fixtures/Project/src/Kernel.php
+        class: KunicMarko\JMSMessengerAdapter\Features\Fixtures\Project\Kernel

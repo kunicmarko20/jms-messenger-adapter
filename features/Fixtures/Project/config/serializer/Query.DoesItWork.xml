@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="KunicMarko\JMSMessengerAdapter\Features\Fixtures\Project\Query\DoesItWork" exclusion-policy="ALL">
+        <property name="works" type="string" expose="true"/>
+        <property name="notExposed" type="string"/>
+        <property name="shouldBeNull" type="string" expose="true" groups="canAnyoneSeeMe"/>
+    </class>
+</serializer>

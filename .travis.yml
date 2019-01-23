@@ -1,0 +1,44 @@
+language: php
+sudo: true
+
+services:
+  - rabbitmq
+
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+  - nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - |
+     if [[ ${TARGET} == "e2e" ]]; then
+       wget http://ftp.debian.org/debian/pool/main/libr/librabbitmq/librabbitmq-dev_0.5.2-2_amd64.deb
+       wget http://ftp.debian.org/debian/pool/main/libr/librabbitmq/librabbitmq1_0.5.2-2_amd64.deb
+       sudo dpkg -i librabbitmq1_0.5.2-2_amd64.deb librabbitmq-dev_0.5.2-2_amd64.deb
+
+       local ext_name=amqp-1.9.3
+       local ext_so=amqp.so
+       local ext_dir=$(php -r "echo ini_get('extension_dir');")
+       local ext_cache=~/php-ext/$(basename $ext_dir)/$ext_name
+
+       if [[ -e $ext_cache/$ext_so ]]; then
+           echo extension = $ext_cache/$ext_so >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/conf.d/travis.ini
+       else
+           rm ~/.pearrc /tmp/pear 2>/dev/null || true
+           mkdir -p $ext_cache
+           echo yes | pecl install -f $ext_name &&
+           cp $ext_dir/$ext_so $ext_cache
+       fi
+     fi
+
+install:
+  - composer install
+
+script:
+  - bin/behat --strict --vvv
