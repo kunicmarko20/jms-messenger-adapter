@@ -5,7 +5,6 @@ services:
   - rabbitmq
 
 php:
-  - '7.1'
   - '7.2'
   - '7.3'
   - nightly
@@ -17,7 +16,6 @@ matrix:
 
 before_install:
   - |
-     if [[ ${TARGET} == "e2e" ]]; then
        wget http://ftp.debian.org/debian/pool/main/libr/librabbitmq/librabbitmq-dev_0.5.2-2_amd64.deb
        wget http://ftp.debian.org/debian/pool/main/libr/librabbitmq/librabbitmq1_0.5.2-2_amd64.deb
        sudo dpkg -i librabbitmq1_0.5.2-2_amd64.deb librabbitmq-dev_0.5.2-2_amd64.deb
@@ -35,10 +33,9 @@ before_install:
            echo yes | pecl install -f $ext_name &&
            cp $ext_dir/$ext_so $ext_cache
        fi
-     fi
 
 install:
   - composer install
 
 script:
-  - bin/behat --strict --vvv
+  - bin/behat --strict -vvv
