@@ -1,7 +1,7 @@
 {
     "name": "kunicmarko/jms-messenger-adapter",
-    "description": "Use JMS Serializer with Symfony Messenger.",
     "type": "library",
+    "description": "Use JMS Serializer with Symfony Messenger.",
     "keywords": [
         "symfony",
         "messenger",
@@ -45,15 +45,23 @@
         }
     },
     "autoload": {
-        "psr-4" : {
+        "psr-4": {
             "KunicMarko\\JMSMessengerAdapter\\": "src/"
         }
     },
     "autoload-dev": {
-        "psr-4" : {
+        "psr-4": {
             "KunicMarko\\JMSMessengerAdapter\\Tests\\": "tests/",
             "KunicMarko\\JMSMessengerAdapter\\Features\\Fixtures\\Project\\": "features/Fixtures/Project/src",
             "KunicMarko\\JMSMessengerAdapter\\Features\\": "features/"
         }
+    },
+    "scripts": {
+        "tests:e2e": [
+            "behat --strict --colors -vvv"
+        ],
+        "tests:unit": [
+            "phpunit --colors --coverage-clover build/logs/clover.xml"
+        ]
     }
 }

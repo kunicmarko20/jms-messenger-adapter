@@ -80,9 +80,6 @@ final class Kernel extends BaseKernel
                         'namespace_prefix' => 'KunicMarko\JMSMessengerAdapter\Features\Fixtures\Project',
                         'path' => '%kernel.root_dir%/../config/serializer',
                     ],
-                    'not sure if this string is important2' => [
-                        'path' => __DIR__.'/../../../../src/Resources/config/serializer',
-                    ],
                 ],
             ],
         ]);

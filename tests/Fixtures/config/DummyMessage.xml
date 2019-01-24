@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="KunicMarko\JMSMessengerAdapter\Tests\Fixtures\DummyMessage">
+        <property name="message" type="string" expose="true" />
+    </class>
+</serializer>

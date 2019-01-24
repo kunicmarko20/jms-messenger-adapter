@@ -7,6 +7,9 @@ use Symfony\Component\Messenger\Stamp\StampInterface;
 
 final class DeserializationContextStamp implements StampInterface
 {
+    /**
+     * @var DeserializationContext
+     */
     private $context;
 
     public function __construct(DeserializationContext $context)

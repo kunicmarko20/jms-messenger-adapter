@@ -3,5 +3,6 @@
     <class name="JMS\Serializer\Context">
         <property name="attributes" type="array" expose="true"/>
         <property name="initialized" type="boolean" expose="true"/>
+        <property name="format" type="string" expose="true"/>
     </class>
 </serializer>

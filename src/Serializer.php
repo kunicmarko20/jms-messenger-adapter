@@ -41,7 +41,8 @@ final class Serializer implements SerializerInterface
         $message = $this->serializer->deserialize(
             $encodedEnvelope['body'],
             $encodedEnvelope['headers']['type'],
-            $this->format, $context ?? null
+            $this->format,
+            $context ?? null
         );
 
         return new Envelope($message, ... $this->extractStamps($stamps));
