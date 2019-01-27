@@ -40,7 +40,19 @@ return [
 #### Configuration
 
 ```yaml
+#config/packages/jms_messenger.yaml
 jms_messenger:
     format: json #xml, json, yaml
-    serializer_id: messenger.transport.jms_serializer #You have to specify this id in messenger config
+    serializer_id: messenger.transport.jms_serializer
+```
+
+Serialized id should be configured in the messenger config, in case you did not get the recipe, just add:
+
+```yaml
+#config/packages/jms_messenger.yaml
+framework:
+  messenger:
+    enabled: true
+    serializer:
+      id: messenger.transport.jms_serializer
 ```
