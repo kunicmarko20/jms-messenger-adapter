@@ -3,6 +3,7 @@
 namespace KunicMarko\JMSMessengerAdapter\Tests;
 
 use JMS\Serializer\SerializationContext;
+use KunicMarko\JMSMessengerAdapter\Exception\ArgumentMissing;
 use KunicMarko\JMSMessengerAdapter\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\Serializer as JMSSerializer;
@@ -27,6 +28,43 @@ final class SerializerTest extends TestCase
         $envelope = new Envelope(new DummyMessage('Hello'));
 
         $this->assertEquals($envelope, $serializer->decode($serializer->encode($envelope)));
+    }
+
+    /**
+     * @test
+     * @dataProvider decodeFailureData
+     */
+    public function decode_should_fail_if_arguments_missing(array $encodedEnvelope): void
+    {
+        $serializer = new Serializer($this->jmsSerializer, 'json');
+        $this->expectException(ArgumentMissing::class);
+        $serializer->decode($encodedEnvelope);
+    }
+
+    public function decodeFailureData(): \Generator
+    {
+        yield 'missing body' => [
+            [],
+        ];
+
+        yield 'missing headers' => [
+            [
+                'body' => [
+                    'a',
+                ],
+            ],
+        ];
+
+        yield 'missing header type' => [
+            [
+                'body' => [
+                    'a',
+                ],
+                'headers' => [
+                    'b',
+                ],
+            ],
+        ];
     }
 
     /** @test */

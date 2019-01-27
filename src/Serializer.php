@@ -2,6 +2,7 @@
 
 namespace KunicMarko\JMSMessengerAdapter;
 
+use KunicMarko\JMSMessengerAdapter\Exception\ArgumentMissing;
 use KunicMarko\JMSMessengerAdapter\Stamp\DeserializationContextStamp;
 use KunicMarko\JMSMessengerAdapter\Stamp\SerializationContextStamp;
 use Symfony\Component\Messenger\Envelope;
@@ -25,11 +26,11 @@ final class Serializer implements SerializerInterface
     public function decode(array $encodedEnvelope): Envelope
     {
         if (empty($encodedEnvelope['body']) || empty($encodedEnvelope['headers'])) {
-            throw new \InvalidArgumentException('Encoded envelope should have at least a "body" and some "headers".');
+            throw ArgumentMissing::envelopeBodyAndHeaders();
         }
 
         if (empty($encodedEnvelope['headers']['type'])) {
-            throw new \InvalidArgumentException('Encoded envelope does not have a "type" header.');
+            throw ArgumentMissing::typeHeader();
         }
 
         $stamps = $this->decodeStamps($encodedEnvelope);
@@ -52,10 +53,8 @@ final class Serializer implements SerializerInterface
     {
         $extractedStamps = [];
 
-        foreach ($stamps as $innerStamps) {
-            foreach ($innerStamps as $stamp) {
-                $extractedStamps[] = $stamp;
-            }
+        foreach ($stamps as $innerStamps) foreach ($innerStamps as $stamp) {
+            $extractedStamps[] = $stamp;
         }
 
         return $extractedStamps;
@@ -66,7 +65,7 @@ final class Serializer implements SerializerInterface
         $stamps = [];
 
         foreach ($encodedEnvelope['headers'] as $name => $arrayValue) {
-            if (0 !== strpos($name, self::STAMP_HEADER_PREFIX)) {
+            if (strpos($name, self::STAMP_HEADER_PREFIX) !== 0) {
                 continue;
             }
 
