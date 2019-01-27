@@ -4,3 +4,43 @@ JMS Messenger Adapter
 Use JMS Serializer with Symfony Messenger.
 
 [![PHP Version](https://img.shields.io/badge/php-%5E7.2-blue.svg)](https://img.shields.io/badge/php-%5E7.2-blue.svg)
+[![Latest Stable Version](https://poser.pugx.org/kunicmarko/jms-messenger-adapter/v/stable)](https://packagist.org/packages/kunicmarko/jms-messenger-adapter)
+[![Latest Unstable Version](https://poser.pugx.org/kunicmarko/jms-messenger-adapter/v/unstable)](https://packagist.org/packages/kunicmarko/jms-messenger-adapter)
+
+[![Build Status](https://travis-ci.org/kunicmarko20/jms-messenger-adapter.svg?branch=master)](https://travis-ci.org/kunicmarko20/jms-messenger-adapter)
+[![Coverage Status](https://coveralls.io/repos/github/kunicmarko20/jms-messenger-adapter/badge.svg?branch=master)](https://coveralls.io/github/kunicmarko20/jms-messenger-adapter?branch=master)
+
+Documentation
+-------------
+
+* [Installation](#installation)
+  * [Symfony](#symfony)
+    * [Configuration](#configuration)
+
+## Installation
+
+Add dependency with Composer:
+
+```bash
+composer require kunicmarko/jms-messenger-adapter
+```
+
+### Symfony
+
+Enable the bundle for all environments:
+
+```php
+// bundles.php
+return [
+    //...
+    KunicMarko\JMSMessengerAdapter\Bridge\Symfony\JMSMessengerAdapterBundle::class => ['all' => true],
+];
+```
+
+#### Configuration
+
+```yaml
+jms_messenger:
+    format: json #xml, json, yaml
+    serializer_id: messenger.transport.jms_serializer #You have to specify this id in messenger config
+```

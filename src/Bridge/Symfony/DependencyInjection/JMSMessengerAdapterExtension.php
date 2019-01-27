@@ -9,7 +9,6 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
-use Symfony\Component\Messenger\Transport\AmqpExt\AmqpTransportFactory;
 
 final class JMSMessengerAdapterExtension extends ConfigurableExtension implements PrependExtensionInterface
 {
@@ -26,29 +25,7 @@ final class JMSMessengerAdapterExtension extends ConfigurableExtension implement
             )
         );
 
-        $container->setAlias($config['id'], Serializer::class);
-
-        if ($container->hasAlias('messenger.transport.serializer')) {
-            $container->removeAlias('messenger.transport.serializer');
-        }
-
-        $container->setAlias('messenger.transport.serializer', $config['id']);
-
-
-        if ($config['transports']['amqp']['enabled'] ?? false
-            && !$container->has($config['transports']['amqp']['factory_id'])
-        ) {
-            $container->setDefinition(
-                $config['transports']['amqp']['factory_id'],
-                (new Definition(
-                    AmqpTransportFactory::class,
-                    [
-                        new Reference(Serializer::class),
-                        '%kernel.debug%'
-                    ]
-                ))->addTag('messenger.transport_factory')
-            );
-        }
+        $container->setAlias($config['serializer_id'], Serializer::class);
     }
 
     public function getAlias(): string
@@ -58,6 +35,10 @@ final class JMSMessengerAdapterExtension extends ConfigurableExtension implement
 
     public function prepend(ContainerBuilder $container): void
     {
+        if (!$container->hasExtension('jms_serializer')) {
+            return;
+        }
+
         $container->prependExtensionConfig('jms_serializer', [
             'metadata' => [
                 'directories' => [

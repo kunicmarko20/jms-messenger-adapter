@@ -14,12 +14,6 @@ final class JMSMessengerAdapterExtensionTest extends AbstractExtensionTestCase
         $this->load();
         $this->assertContainerBuilderHasService(Serializer::class, Serializer::class);
         $this->assertContainerBuilderHasAlias('messenger.transport.jms_serializer', Serializer::class);
-        $this->assertContainerBuilderHasAlias('messenger.transport.serializer', 'messenger.transport.jms_serializer');
-        $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'messenger.transport.amqp.factory',
-            0,
-            Serializer::class
-        );
     }
 
     protected function getContainerExtensions(): array
