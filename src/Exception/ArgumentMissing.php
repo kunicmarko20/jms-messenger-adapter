@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KunicMarko\JMSMessengerAdapter\Exception;
 
-class ArgumentMissing extends \InvalidArgumentException implements JMSMessengerAdapterException
+final class ArgumentMissing extends \InvalidArgumentException implements JMSMessengerAdapterException
 {
     public static function envelopeBodyAndHeaders(): self
     {

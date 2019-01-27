@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KunicMarko\JMSMessengerAdapter\Stamp;
 
 use JMS\Serializer\SerializationContext;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KunicMarko\JMSMessengerAdapter;
 
 use KunicMarko\JMSMessengerAdapter\Exception\ArgumentMissing;
@@ -53,8 +55,10 @@ final class Serializer implements SerializerInterface
     {
         $extractedStamps = [];
 
-        foreach ($stamps as $innerStamps) foreach ($innerStamps as $stamp) {
-            $extractedStamps[] = $stamp;
+        foreach ($stamps as $innerStamps) {
+            foreach ($innerStamps as $stamp) {
+                $extractedStamps[] = $stamp;
+            }
         }
 
         return $extractedStamps;

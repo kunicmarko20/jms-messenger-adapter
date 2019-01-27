@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KunicMarko\JMSMessengerAdapter\Tests;
 
+use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
 use KunicMarko\JMSMessengerAdapter\Exception\ArgumentMissing;
 use KunicMarko\JMSMessengerAdapter\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\Serializer as JMSSerializer;
+use KunicMarko\JMSMessengerAdapter\Stamp\DeserializationContextStamp;
 use KunicMarko\JMSMessengerAdapter\Stamp\SerializationContextStamp;
 use KunicMarko\JMSMessengerAdapter\Tests\Fixtures\DummyMessage;
 use PHPUnit\Framework\TestCase;
@@ -98,7 +102,8 @@ final class SerializerTest extends TestCase
         $serializer = new Serializer($this->jmsSerializer, 'json');
 
         $envelope = (new Envelope(new DummyMessage('Hello')))
-            ->with($serializationContextStamp = new SerializationContextStamp(SerializationContext::create()))
+            ->with(new SerializationContextStamp(SerializationContext::create()))
+            ->with(new DeserializationContextStamp(DeserializationContext::create()))
             ->with($validationStamp = new ValidationStamp(['foo', 'bar']))
         ;
 
