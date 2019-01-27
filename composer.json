@@ -1,6 +1,6 @@
 {
     "name": "kunicmarko/jms-messenger-adapter",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "Use JMS Serializer with Symfony Messenger.",
     "keywords": [
         "symfony",
