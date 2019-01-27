@@ -42,7 +42,7 @@ return [
 ```yaml
 #config/packages/jms_messenger.yaml
 jms_messenger:
-    format: json #xml, json, yaml
+    format: json # xml, json
     serializer_id: messenger.transport.jms_serializer
 ```
 
