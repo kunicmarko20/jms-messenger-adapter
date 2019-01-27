@@ -18,6 +18,8 @@ matrix:
   include:
     - php: '7.2'
       env: TARGET=e2e
+    - php: '7.2'
+      env: TARGET=coverage
 
   allow_failures:
     - php: nightly
@@ -48,4 +50,4 @@ install:
   - composer install
 
 script:
-  - composer tests:${TARGET}
+  - make ${TARGET}

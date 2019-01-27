@@ -55,13 +55,5 @@
             "KunicMarko\\JMSMessengerAdapter\\Features\\Fixtures\\Project\\": "features/Fixtures/Project/src",
             "KunicMarko\\JMSMessengerAdapter\\Features\\": "features/"
         }
-    },
-    "scripts": {
-        "tests:e2e": [
-            "behat --strict --colors -vvv"
-        ],
-        "tests:unit": [
-            "phpunit --colors --coverage-clover build/logs/clover.xml"
-        ]
     }
 }
