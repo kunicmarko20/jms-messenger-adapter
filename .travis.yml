@@ -17,6 +17,8 @@ matrix:
   fast_finish: true
   include:
     - php: '7.2'
+      env: TARGET=unit COMPOSER_FLAGS='--prefer-lowest'
+    - php: '7.2'
       env: TARGET=e2e
     - php: '7.2'
       env: TARGET=coverage
@@ -47,7 +49,7 @@ before_install:
     fi
 
 install:
-  - composer install
+  - composer update ${COMPOSER_FLAGS}
 
 script:
   - make ${TARGET}
