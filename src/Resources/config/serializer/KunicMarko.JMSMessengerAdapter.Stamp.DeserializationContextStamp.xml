@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="KunicMarko\JMSMessengerAdapter\Stamp\DeserializationContextStamp">
+    <class name="KunicMarko\JMSMessengerAdapter\Stamp\DeserializationContextStamp" exclusion-policy="ALL">
         <property name="context" type="JMS\Serializer\DeserializationContext" expose="true" />
     </class>
 </serializer>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="Symfony\Component\Messenger\Stamp\ValidationStamp">
+    <class name="Symfony\Component\Messenger\Stamp\ValidationStamp" exclusion-policy="ALL">
         <property name="groups" type="array" expose="true" />
     </class>
 </serializer>
