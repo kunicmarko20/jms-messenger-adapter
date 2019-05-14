@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="JMS\Serializer\SerializationContext">
+    <class name="JMS\Serializer\SerializationContext" exclusion-policy="ALL">
         <property name="serializeNull" type="boolean" expose="true"/>
     </class>
 </serializer>
