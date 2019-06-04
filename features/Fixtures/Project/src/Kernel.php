@@ -61,7 +61,7 @@ final class Kernel extends BaseKernel
                     DoesItWork::class => 'amqp',
                 ],
                 'serializer' => [
-                    'id' => 'messenger.transport.jms_serializer',
+                    'default_serializer' => 'messenger.transport.jms_serializer',
                 ],
                 'buses' => [
                     'messenger.bus.default' => [

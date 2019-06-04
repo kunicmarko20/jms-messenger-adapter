@@ -54,5 +54,5 @@ framework:
   messenger:
     enabled: true
     serializer:
-      id: messenger.transport.jms_serializer
+      default_serializer: messenger.transport.jms_serializer
 ```

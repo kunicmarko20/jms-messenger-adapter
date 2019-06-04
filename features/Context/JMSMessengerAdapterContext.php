@@ -9,6 +9,7 @@ use Psr\Container\ContainerInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 use KunicMarko\JMSMessengerAdapter\Features\Fixtures\Project\Query\DoesItWork;
+use Symfony\Component\Messenger\Transport\AmqpExt\AmqpTransport;
 
 class JMSMessengerAdapterContext implements Context
 {
@@ -37,16 +38,18 @@ class JMSMessengerAdapterContext implements Context
      */
     public function iShouldGetAResponseWithMissingField()
     {
-        $receiver = $this->receiverLocator->get('amqp');
+        $transport = $this->receiverLocator->get('amqp');
 
-        $receiver->receive(static function (Envelope $envelope) use ($receiver): void {
+        \assert($transport instanceof AmqpTransport);
+
+        foreach ($transport->get() as $envelope) {
+            \assert($envelope instanceof Envelope);
             $message = $envelope->getMessage();
             Assert::assertInstanceOf(DoesItWork::class, $message);
             Assert::assertSame('works', $message->works);
             Assert::assertNull($message->notExposed);
             Assert::assertNull($message->shouldBeNull);
-            $receiver->stop();
-        });
+        }
     }
 
     /**
@@ -62,15 +65,18 @@ class JMSMessengerAdapterContext implements Context
      */
     public function iShouldGetAResponse()
     {
-        $receiver = $this->receiverLocator->get('amqp');
 
-        $receiver->receive(static function (Envelope $envelope) use ($receiver): void {
+        $transport = $this->receiverLocator->get('amqp');
+
+        \assert($transport instanceof AmqpTransport);
+
+        foreach ($transport->get() as $envelope) {
+            \assert($envelope instanceof Envelope);
             $message = $envelope->getMessage();
             Assert::assertInstanceOf(DoesItWork::class, $message);
             Assert::assertNull($message->works);
             Assert::assertNull($message->notExposed);
             Assert::assertSame('notNull', $message->shouldBeNull);
-            $receiver->stop();
-        });
+        }
     }
 }
