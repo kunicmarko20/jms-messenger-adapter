@@ -16,6 +16,7 @@ Documentation
 * [Installation](#installation)
   * [Symfony](#symfony)
     * [Configuration](#configuration)
+* [Stamps](#stamps)
 
 ## Installation
 
@@ -55,4 +56,19 @@ framework:
     enabled: true
     serializer:
       default_serializer: messenger.transport.jms_serializer
+```
+
+## Stamps
+
+This library provides additional stamps that will use JMS Deserialization/Serialization Context
+for serializing/deserializing messages.
+
+```php
+use JMS\Serializer\SerializationContext;
+use KunicMarko\JMSMessengerAdapter\Stamp\SerializationContextStamp;
+
+$context = SerializationContext::create();
+$context->setGroups(['foo']);
+        
+$messageBus->dispatch(new Message(), [new SerializationContextStamp($context)]);
 ```
