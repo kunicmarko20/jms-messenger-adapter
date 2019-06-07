@@ -48,7 +48,7 @@ final class Serializer implements SerializerInterface
             $context ?? null
         );
 
-        return new Envelope($message, ... $this->extractStamps($stamps));
+        return new Envelope($message, $this->extractStamps($stamps));
     }
 
     private function extractStamps(array $stamps): array

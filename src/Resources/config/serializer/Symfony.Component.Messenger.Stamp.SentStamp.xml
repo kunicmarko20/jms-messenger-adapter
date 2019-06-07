@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="Symfony\Component\Messenger\Stamp\SentStamp" exclusion-policy="ALL">
+        <property name="senderClass" type="string" expose="true" />
+        <property name="senderAlias" type="string" expose="true" />
+    </class>
+</serializer>
