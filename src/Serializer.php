@@ -8,6 +8,7 @@ use KunicMarko\JMSMessengerAdapter\Exception\ArgumentMissing;
 use KunicMarko\JMSMessengerAdapter\Stamp\DeserializationContextStamp;
 use KunicMarko\JMSMessengerAdapter\Stamp\SerializationContextStamp;
 use Symfony\Component\Messenger\Envelope;
+use Symfony\Component\Messenger\Stamp\NonSendableStampInterface;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use JMS\Serializer\SerializerInterface as JMSSerializerInterface;
 
@@ -93,6 +94,8 @@ final class Serializer implements SerializerInterface
             \assert($serializerStamp instanceof SerializationContextStamp);
             $context = $serializerStamp->getContext();
         }
+
+        $envelope = $envelope->withoutStampsOfType(NonSendableStampInterface::class);
 
         $headers = ['type' => \get_class($envelope->getMessage())] + $this->encodeStamps($envelope);
 
