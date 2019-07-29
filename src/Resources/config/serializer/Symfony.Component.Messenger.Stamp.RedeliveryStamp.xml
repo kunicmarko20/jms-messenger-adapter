@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="Symfony\Component\Messenger\Stamp\RedeliveryStamp" exclusion-policy="ALL">
+        <property name="retryCount" type="int" expose="true" />
+        <property name="senderClassOrAlias" type="string" expose="true" />
+        <property name="exceptionMessage" type="string" expose="true" />
+        <property name="flattenException" type="Throwable" expose="true" />
+        <property name="redeliveredAt" type="DateTimeImmutable" expose="true" />
+    </class>
+</serializer>
