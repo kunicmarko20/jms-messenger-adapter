@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="Symfony\Component\Messenger\Stamp\HandledStamp" exclusion-policy="ALL">
+        <property name="result" type="string" expose="true" />
+        <property name="handlerName" type="string" expose="true" />
+    </class>
+</serializer>
