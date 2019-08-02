@@ -3,8 +3,6 @@
     <class name="Symfony\Component\Messenger\Stamp\RedeliveryStamp" exclusion-policy="ALL">
         <property name="message" type="string" expose="true" />
         <property name="code" type="int" expose="true" />
-        <property name="previous" type="Throwable" expose="true" />
-        <property name="trace" type="array" expose="true" />
         <property name="traceAsString" type="string" expose="true" />
         <property name="class" type="string" expose="true" />
         <property name="statusCode" type="string" expose="true" />
