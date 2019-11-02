@@ -43,12 +43,16 @@ class JMSMessengerAdapterContext implements Context
         \assert($transport instanceof AmqpTransport);
 
         foreach ($transport->get() as $envelope) {
-            \assert($envelope instanceof Envelope);
-            $message = $envelope->getMessage();
-            Assert::assertInstanceOf(DoesItWork::class, $message);
-            Assert::assertSame('works', $message->works);
-            Assert::assertNull($message->notExposed);
-            Assert::assertNull($message->shouldBeNull);
+            try {
+                \assert($envelope instanceof Envelope);
+                $message = $envelope->getMessage();
+                Assert::assertInstanceOf(DoesItWork::class, $message);
+                Assert::assertSame('works', $message->works);
+                Assert::assertNull($message->notExposed);
+                Assert::assertNull($message->shouldBeNull);
+            } finally {
+                $transport->ack($envelope);
+            }
         }
     }
 
@@ -65,18 +69,21 @@ class JMSMessengerAdapterContext implements Context
      */
     public function iShouldGetAResponse()
     {
-
         $transport = $this->receiverLocator->get('amqp');
 
         \assert($transport instanceof AmqpTransport);
 
         foreach ($transport->get() as $envelope) {
-            \assert($envelope instanceof Envelope);
-            $message = $envelope->getMessage();
-            Assert::assertInstanceOf(DoesItWork::class, $message);
-            Assert::assertNull($message->works);
-            Assert::assertNull($message->notExposed);
-            Assert::assertSame('notNull', $message->shouldBeNull);
+            try {
+                \assert($envelope instanceof Envelope);
+                $message = $envelope->getMessage();
+                Assert::assertInstanceOf(DoesItWork::class, $message);
+                Assert::assertNull($message->works);
+                Assert::assertNull($message->notExposed);
+                Assert::assertSame('notNull', $message->shouldBeNull);
+            } finally {
+                $transport->ack($envelope);
+            }
         }
     }
 }
