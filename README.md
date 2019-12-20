@@ -3,6 +3,8 @@ JMS Messenger Adapter
 
 Use JMS Serializer with Symfony Messenger.
 
+THIS IS 0.X BRANCH, SUPPORTING ONLY SYMFONY 4.3, for newer versions check [here](https://github.com/kunicmarko20/jms-messenger-adapter/blob/master/README.md).
+
 [![PHP Version](https://img.shields.io/badge/php-%5E7.2-blue.svg)](https://img.shields.io/badge/php-%5E7.2-blue.svg)
 [![Latest Stable Version](https://poser.pugx.org/kunicmarko/jms-messenger-adapter/v/stable)](https://packagist.org/packages/kunicmarko/jms-messenger-adapter)
 [![Latest Unstable Version](https://poser.pugx.org/kunicmarko/jms-messenger-adapter/v/unstable)](https://packagist.org/packages/kunicmarko/jms-messenger-adapter)
