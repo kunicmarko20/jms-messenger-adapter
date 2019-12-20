@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="Symfony\Component\Messenger\Stamp\BusNameStamp" exclusion-policy="ALL">
+    <class name="Symfony\Component\Messenger\Stamp\DispatchAfterCurrentBusStamp" exclusion-policy="ALL">
     </class>
 </serializer>

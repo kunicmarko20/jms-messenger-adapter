@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="Symfony\Component\Debug\Exception\FlattenException" exclusion-policy="ALL">
+    <class name="Symfony\Component\ErrorHandler\Exception\FlattenException" exclusion-policy="ALL">
         <property name="message" type="string" expose="true" />
         <property name="code" type="int" expose="true" />
         <property name="traceAsString" type="string" expose="true" />
