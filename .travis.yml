@@ -25,6 +25,7 @@ matrix:
 
   allow_failures:
     - php: 7.4snapshot
+    - env: TARGET=e2e
 
 before_install:
   - |
