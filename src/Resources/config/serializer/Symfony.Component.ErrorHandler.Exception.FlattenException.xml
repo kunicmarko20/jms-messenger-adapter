@@ -3,7 +3,7 @@
     <class name="Symfony\Component\ErrorHandler\Exception\FlattenException" exclusion-policy="ALL">
         <property name="message" type="string" expose="true" />
         <property name="code" type="int" expose="true" />
-        <property name="previous" type="Throwable" expose="true" />
+        <property name="previous" type="Symfony\Component\ErrorHandler\Exception\FlattenException" expose="true" />
         <property name="trace" type="array" expose="true" />
         <property name="traceAsString" type="string" expose="true" />
         <property name="class" type="string" expose="true" />
