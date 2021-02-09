@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serializer>
+    <class name="Symfony\Component\Messenger\Stamp\ErrorDetailsStamp" exclusion-policy="ALL">
+        <property name="exceptionClass" type="string" expose="true" />
+        <property name="exceptionCode" type="int" expose="true" />
+        <property name="exceptionMessage" type="string" expose="true" />
+        <property name="flattenException" type="Symfony\Component\ErrorHandler\Exception\FlattenException" expose="true" />
+    </class>
+</serializer>
