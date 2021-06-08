@@ -19,7 +19,6 @@ env:
 jobs:
   fast_finish: true
   allow_failures:
-    - php: 7.4
     - env: TARGET=e2e
 
 before_install:
