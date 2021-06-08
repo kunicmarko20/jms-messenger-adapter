@@ -11,16 +11,13 @@ php:
   - '8.0'
 
 env:
-  global:
-    - TARGET=unit
+  - TARGET=unit
+  - TARGET=unit COMPOSER_FLAGS='--prefer-lowest'
+  - TARGET=e2e
+  - TARGET=coverage
 
 jobs:
   fast_finish: true
-  include:
-    - env: TARGET=unit COMPOSER_FLAGS='--prefer-lowest'
-    - env: TARGET=e2e
-    - env: TARGET=coverage
-
   allow_failures:
     - php: 7.4
     - env: TARGET=e2e
