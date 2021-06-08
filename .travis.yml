@@ -7,7 +7,8 @@ services:
 php:
   - '7.2'
   - '7.3'
-  - 7.4snapshot
+  - '7.4'
+  - '8.0'
 
 env:
   global:
@@ -24,7 +25,7 @@ matrix:
       env: TARGET=coverage
 
   allow_failures:
-    - php: 7.4snapshot
+    - php: 7.4
     - env: TARGET=e2e
 
 before_install:
