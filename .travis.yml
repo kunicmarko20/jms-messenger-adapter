@@ -7,24 +7,18 @@ services:
 php:
   - '7.2'
   - '7.3'
-  - 7.4snapshot
+  - '7.4'
+  - '8.0'
 
 env:
-  global:
-    - TARGET=unit
+  - TARGET=unit
+  - TARGET=unit COMPOSER_FLAGS='--prefer-lowest'
+  - TARGET=e2e
+  - TARGET=coverage
 
-matrix:
+jobs:
   fast_finish: true
-  include:
-    - php: '7.2'
-      env: TARGET=unit COMPOSER_FLAGS='--prefer-lowest'
-    - php: '7.2'
-      env: TARGET=e2e
-    - php: '7.2'
-      env: TARGET=coverage
-
   allow_failures:
-    - php: 7.4snapshot
     - env: TARGET=e2e
 
 before_install:

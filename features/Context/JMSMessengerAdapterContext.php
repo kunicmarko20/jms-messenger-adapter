@@ -6,10 +6,10 @@ use Behat\Behat\Context\Context;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use PHPUnit\Framework\Assert;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpTransport;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 use KunicMarko\JMSMessengerAdapter\Features\Fixtures\Project\Query\DoesItWork;
-use Symfony\Component\Messenger\Transport\AmqpExt\AmqpTransport;
 
 class JMSMessengerAdapterContext implements Context
 {
@@ -65,7 +65,6 @@ class JMSMessengerAdapterContext implements Context
      */
     public function iShouldGetAResponse()
     {
-
         $transport = $this->receiverLocator->get('amqp');
 
         \assert($transport instanceof AmqpTransport);
