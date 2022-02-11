@@ -22,7 +22,7 @@
     "require": {
         "php": "^7.2 || ^8.0",
         "jms/serializer": "^2.3 || ^3.9",
-        "symfony/messenger": "^4.4 || ^5.3"
+        "symfony/messenger": "^4.4 || ^5.3 || ^6.0"
     },
     "require-dev": {
         "behat/behat": "^3.6",
@@ -31,11 +31,11 @@
         "matthiasnoback/symfony-dependency-injection-test": "dev-master",
         "php-coveralls/php-coveralls": "^2.4",
         "phpunit/phpunit": "^8.5 || ^9.5",
-        "symfony/config": "^4.4 || ^5.3",
-        "symfony/debug": "^4.4 || ^5.3",
-        "symfony/dependency-injection": "^4.4 || ^5.3",
-        "symfony/framework-bundle": "^4.4 || ^5.3",
-        "symfony/http-kernel": "^4.4 || ^5.3"
+        "symfony/config": "^4.4 || ^5.3 || ^6.0",
+        "symfony/debug": "^4.4 || ^5.3 || ^6.0",
+        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
+        "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0",
+        "symfony/http-kernel": "^4.4 || ^5.3 || ^6.0"
     },
     "config": {
         "bin-dir": "bin",
